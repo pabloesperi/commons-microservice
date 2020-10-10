@@ -1,0 +1,35 @@
+Configurations:
+
+Este proyecto sirve para incluír aquellas clases que son comunes a otros proyectos,
+de modo de no duplicar clases por cada microservicio.
+
+Proceso:
+
+1) Como todo proyecto de spring utiliza un origen de datos por defecto pero que, en 
+este caso no lo necesitamos, hay dos alternativas:
+a - O bien, se incorpora la dependencia de h2
+b- Otra posibilidad es la de excluir la configuración de la conexión, de la autoconfiguración
+de spring. Esta segunda opción es más limpia.
+Pasos:
+1-Vamos a la clase principal y agregamos la anotación @EnableAutoConfiguration, agregándole
+como parámetro:  
+
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+
+Agregar la dependencia en el otro proyecto:
+
+1) Se copia el groupId, artifactId y version, del proyecto commons.
+
+Ej.:
+
+	<groupId>com.proyects.microservices.app.commons-microservice</groupId>
+	<artifactId>commons-microservice</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	
+2) Se agrega, en las dependencias del otro proyecto, el del commons.
+3) En la clase principal del otro proyecto, se debe indicar donde spring debe buscar
+los entity. En este caso, no es dentro del package principal sino en la dependencia
+de este proyecto commons.
+Se debe hacer la siguiente anotación: 
+
+@EntityScan({"com.proyects.microservices.app.commonsmicroservice.models"})

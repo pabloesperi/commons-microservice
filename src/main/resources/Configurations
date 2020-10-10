@@ -30,6 +30,6 @@ Ej.:
 3) En la clase principal del otro proyecto, se debe indicar donde spring debe buscar
 los entity. En este caso, no es dentro del package principal sino en la dependencia
 de este proyecto commons.
-Se debe hacer la siguiente anotación:
+Se debe hacer la siguiente anotación
 
 @EntityScan({"com.proyects.microservices.app.commonsmicroservice.models"})

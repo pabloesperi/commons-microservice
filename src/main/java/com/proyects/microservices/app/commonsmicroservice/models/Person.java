@@ -17,8 +17,10 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.proyects.microservices.app.commonsmicroservice.constants.PropertiesConstantsEnum;
+
 @Entity
-@Table(name = "persons")
+@Table(name = "people")
 public class Person implements Serializable{
 
 	@Id

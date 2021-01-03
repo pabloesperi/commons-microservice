@@ -42,8 +42,8 @@ public class Product implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 	
-//	@ManyToMany(mappedBy = "product")
-//	private List <Bill> bill;	
+	@ManyToMany(mappedBy = "products")
+	private List <Bill> bill;	
 	
 //	El decorador @Transient indica que se trata de una propiedad que no será persistida
 	@Transient
@@ -79,6 +79,22 @@ public class Product implements Serializable {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+
+	public List<Bill> getBill() {
+		return bill;
+	}
+
+	public void setBill(List<Bill> bill) {
+		this.bill = bill;
 	}
 
 }

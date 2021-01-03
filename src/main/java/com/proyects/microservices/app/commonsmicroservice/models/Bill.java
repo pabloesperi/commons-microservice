@@ -1,6 +1,7 @@
 package com.proyects.microservices.app.commonsmicroservice.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -29,6 +31,10 @@ public class Bill implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinTable(name = "bills_to_persons", joinColumns = @JoinColumn(name="bills_id"), inverseJoinColumns = @JoinColumn(name="persons_id"))
 	private Person person;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "products_to_bills", joinColumns = @JoinColumn(name="bills_id"), inverseJoinColumns = @JoinColumn(name="products_id"))
+	private List <Product> products;
 
 	public Long getId() {
 		return id;
@@ -53,8 +59,12 @@ public class Bill implements Serializable {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-	
-//	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(name = "bills_to_products", joinColumns = @JoinColumn(name="bills_id"), inverseJoinColumns = @JoinColumn(name="products_id"))
-//	private List<Product> product;
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 }

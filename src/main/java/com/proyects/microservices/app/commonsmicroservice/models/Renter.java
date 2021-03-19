@@ -9,7 +9,23 @@ import javax.persistence.Table;
 public class Renter extends Person {
 
 	private static final long serialVersionUID = 1L;
+		
+	public Renter(Double score, String personalDescription, Boolean pets, Boolean balconyPrefered,
+			Boolean backyardPrefered, Boolean partiesPrefered, Boolean smoker) {
+		super();
+		this.score = score;
+		this.personalDescription = personalDescription;
+		this.pets = pets;
+		this.balconyPrefered = balconyPrefered;
+		this.backyardPrefered = backyardPrefered;
+		this.partiesPrefered = partiesPrefered;
+		this.smoker = smoker;
+	}
 	
+	public Renter() {
+		super();
+	}
+
 	@Column
 	private Double score;
 	
@@ -17,20 +33,30 @@ public class Renter extends Person {
 	private String personalDescription;
 	
 	@Column
-	private boolean pets;
+	private Boolean pets;
 	
 	@Column
-	private boolean balconyPrefered;
+	private Boolean balconyPrefered;
 	
 	@Column
-	private boolean backyardPrefered;
+	private Boolean backyardPrefered;
 	
 	@Column
-	private boolean partiesPrefered;
+	private Boolean partiesPrefered;
 	
 	@Column
-	private boolean smoker;
+	private Boolean smoker;
 	
+	private String type;
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public Double getScore() {
 		return score;
 	}
@@ -43,34 +69,34 @@ public class Renter extends Person {
 	public void setPersonalDescription(String personalDescription) {
 		this.personalDescription = personalDescription;
 	}
-	public boolean isPets() {
+	public Boolean isPets() {
 		return pets;
 	}
-	public void setPets(boolean pets) {
+	public void setPets(Boolean pets) {
 		this.pets = pets;
 	}
-	public boolean isBalconyPrefered() {
+	public Boolean isBalconyPrefered() {
 		return balconyPrefered;
 	}
-	public void setBalconyPrefered(boolean balconyPrefered) {
+	public void setBalconyPrefered(Boolean balconyPrefered) {
 		this.balconyPrefered = balconyPrefered;
 	}
-	public boolean isBackyardPrefered() {
+	public Boolean isBackyardPrefered() {
 		return backyardPrefered;
 	}
-	public void setBackyardPrefered(boolean backyardPrefered) {
+	public void setBackyardPrefered(Boolean backyardPrefered) {
 		this.backyardPrefered = backyardPrefered;
 	}
-	public boolean isPartiesPrefered() {
+	public Boolean isPartiesPrefered() {
 		return partiesPrefered;
 	}
-	public void setPartiesPrefered(boolean partiesPrefered) {
+	public void setPartiesPrefered(Boolean partiesPrefered) {
 		this.partiesPrefered = partiesPrefered;
 	}
-	public boolean isSmoker() {
+	public Boolean isSmoker() {
 		return smoker;
 	}
-	public void setSmoker(boolean smoker) {
+	public void setSmoker(Boolean smoker) {
 		this.smoker = smoker;
 	}
 	

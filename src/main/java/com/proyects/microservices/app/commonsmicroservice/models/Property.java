@@ -1,16 +1,26 @@
 package com.proyects.microservices.app.commonsmicroservice.models;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table
-public class Property {
+public class Property implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -19,19 +29,19 @@ public class Property {
 	private String size;
 	
 	@Column
-	private int room;
+	private Integer room;
 	
 	@Column
-	private int bathroom;
+	private Integer bathroom;
 	
 	@Column
-	private int yearOfConstruction;
+	private Integer yearOfConstruction;
 	
 	@Column
 	private String heatingType;
 	
 	@Column
-	private boolean airConditioner;
+	private Boolean airConditioner;
 	
 	@Column
 	private String actualState;
@@ -43,25 +53,28 @@ public class Property {
 	private String operation;
 	
 	@Column
-	private boolean pets;
+	private Boolean pets;
 	
 	@Column
-	private boolean balcony;
+	private Boolean balcony;
 	
 	@Column
-	private boolean backyard;
+	private Boolean backyard;
 	
 	@Column
-	private boolean parties;
+	private Boolean parties;
 	
 	@Column
-	private boolean smokers;
+	private Boolean smokers;
 	
 	@Column
 	private Double deposit;
 	
 	@Column
 	private String warranties;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	private List<WhishList> whishList;
 
 	public Long getId() {
 		return id;
@@ -79,27 +92,27 @@ public class Property {
 		this.size = size;
 	}
 
-	public int getRoom() {
+	public Integer getRoom() {
 		return room;
 	}
 
-	public void setRoom(int room) {
+	public void setRoom(Integer room) {
 		this.room = room;
 	}
 
-	public int getBathroom() {
+	public Integer getBathroom() {
 		return bathroom;
 	}
 
-	public void setBathroom(int bathroom) {
+	public void setBathroom(Integer bathroom) {
 		this.bathroom = bathroom;
 	}
 
-	public int getYearOfConstruction() {
+	public Integer getYearOfConstruction() {
 		return yearOfConstruction;
 	}
 
-	public void setYearOfConstruction(int yearOfConstruction) {
+	public void setYearOfConstruction(Integer yearOfConstruction) {
 		this.yearOfConstruction = yearOfConstruction;
 	}
 
@@ -111,11 +124,11 @@ public class Property {
 		this.heatingType = heatingType;
 	}
 
-	public boolean isAirConditioner() {
+	public Boolean isAirConditioner() {
 		return airConditioner;
 	}
 
-	public void setAirConditioner(boolean airConditioner) {
+	public void setAirConditioner(Boolean airConditioner) {
 		this.airConditioner = airConditioner;
 	}
 
@@ -143,43 +156,43 @@ public class Property {
 		this.operation = operation;
 	}
 
-	public boolean isPets() {
+	public Boolean isPets() {
 		return pets;
 	}
 
-	public void setPets(boolean pets) {
+	public void setPets(Boolean pets) {
 		this.pets = pets;
 	}
 
-	public boolean isBalcony() {
+	public Boolean isBalcony() {
 		return balcony;
 	}
 
-	public void setBalcony(boolean balcony) {
+	public void setBalcony(Boolean balcony) {
 		this.balcony = balcony;
 	}
 
-	public boolean isBackyard() {
+	public Boolean isBackyard() {
 		return backyard;
 	}
 
-	public void setBackyard(boolean backyard) {
+	public void setBackyard(Boolean backyard) {
 		this.backyard = backyard;
 	}
 
-	public boolean isParties() {
+	public Boolean isParties() {
 		return parties;
 	}
 
-	public void setParties(boolean parties) {
+	public void setParties(Boolean parties) {
 		this.parties = parties;
 	}
 
-	public boolean isSmokers() {
+	public Boolean isSmokers() {
 		return smokers;
 	}
 
-	public void setSmokers(boolean smokers) {
+	public void setSmokers(Boolean smokers) {
 		this.smokers = smokers;
 	}
 
@@ -199,4 +212,11 @@ public class Property {
 		this.warranties = warranties;
 	}
 
+	public List<WhishList> getWhishList() {
+		return whishList;
+	}
+
+	public void setWhishList(List<WhishList> whishList) {
+		this.whishList = whishList;
+	}
 }
